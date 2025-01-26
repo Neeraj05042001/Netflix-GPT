@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import { useRef, useState } from "react";
 import { checkValidData } from "../Utils/Validate";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
@@ -18,8 +20,41 @@ const Login = () => {
       name?.current?.value
     );
     setErrorMessage(message);
-    console.log(message);
-    console.log(name);
+    // if(message) return;
+    if (!isSignInForm) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "_" + errorMessage);
+        });
+    } else {
+      // sign-in form
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user)
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "_" + errorMessage);
+        });
+    }
   };
 
   const toggleSignInForm = () => {
