@@ -11,7 +11,8 @@
 - Firebase Setup
 - Deploying our app to production
 - Create SignUp User Account
-- 
+- Bug fix: Sign up User displayName and profile picture update
+- Bug fix: If the User is not logged in redirect /browse to logic page and vice-vers
 
 
 
