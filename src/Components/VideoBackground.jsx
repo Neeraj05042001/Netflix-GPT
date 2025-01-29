@@ -13,7 +13,6 @@ const VideoBackGround = ({ movieId }) => {
           trailerVideos?.key +
           "?si=DALBcb23_NoG3cxs&autoplay=1&mute=1&playsinline=1"
         }
-         frameborder="0"
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;  fullscreen"
         referrerPolicy="strict-origin-when-cross-origin"
