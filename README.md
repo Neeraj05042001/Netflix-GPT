@@ -20,6 +20,14 @@
 - Create movieSlice and create movie name 
 - add the movies to the redux store
 - created custom hook useNowPlayingMovies for data fetching to the browse
+- Create MainContainer
+       - VideoBackground
+       - VideoTitle
+- Fetch Data for trailer video
+- Update store with trailer video data
+- Embeded the youtube Video and make it autoplay and mute
+- Tailwind classes to make main container look awesome
+
 
 
 
