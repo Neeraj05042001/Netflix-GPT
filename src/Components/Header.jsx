@@ -5,10 +5,14 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUsers, removeUser } from "../Utils/userSlice";
+import { toggleGptSearchButton, toggleLanguageButton } from "../Utils/gptSlice";
+import LangButton from "./LangButton";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const languageButton = useSelector((store) => store.gpt.showLanguageButton);
+
   const dispatch = useDispatch();
   const handleSignOut = () => {
     signOut(auth)
@@ -18,6 +22,11 @@ const Header = () => {
       .catch((error) => {
         navigate("/error");
       });
+  };
+
+  const handleGPTSearchButton = () => {
+    dispatch(toggleGptSearchButton());
+    dispatch(toggleLanguageButton());
   };
 
   useEffect(() => {
@@ -45,17 +54,24 @@ const Header = () => {
     <div className="absolute px-34 py-2 bg-gradient-to-b from-black z-10 w-screen flex justify-between">
       <img className="w-52 " src={NETFLIX_LOGO} />
       {user && (
-        <div className="">
-          <img className="w-12 h-12" alt="UserIcon" src={user.photoURL} />
-          <h3 className="font-bold text-white">
-            {user?.displayName?.toUpperCase()}
-          </h3>
+        <div className="flex p-2">
           <button
-            className="text-white font-bold cursor-pointer"
-            onClick={handleSignOut}
+            className="text-white bg-purple-800  cursor-pointer px-4 py-1 mr-32 rounded-lg justify-center"
+            onClick={handleGPTSearchButton}
           >
-            Sign Out
+            GPT Search
           </button>
+          {languageButton && <LangButton />}
+          <div className="-mr-28">
+            <img className="w-12 h-12" alt="UserIcon" src={user.photoURL} />
+
+            <button
+              className="text-white font-bold cursor-pointer"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </button>
+          </div>
         </div>
       )}
     </div>

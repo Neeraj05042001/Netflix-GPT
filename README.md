@@ -33,6 +33,9 @@
 - TMDB Image CDN url
 - Made the browse page amazing using tailwind css
 - Made custom Hook for Popular, Upcoming and TopRated movies
+- GPT search feature
+- Made a SearchBar and a language toggle Button
+-  
 
 
 
@@ -45,7 +48,7 @@
    - Header
    - Main Menu 
        - Trailer in Background
-       - Tutle & Description
+       - Title & Description
        - MovieSuggestions
            -    MovieLists * 
 - Netflix GPT 
