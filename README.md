@@ -32,6 +32,7 @@
 - Build Movie Card
 - TMDB Image CDN url
 - Made the browse page amazing using tailwind css
+- Made custom Hook for Popular, Upcoming and TopRated movies
 
 
 
