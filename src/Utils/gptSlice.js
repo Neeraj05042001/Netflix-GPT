@@ -1,21 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+import lang from "./languageConstants";
 
 const gptSlice = createSlice({
   name: "gpt",
   initialState: {
     showGptSearch: false,
-    showLanguageButton: false,
+    
   },
   reducers: {
     toggleGptSearchButton: (state) => {
       state.showGptSearch = !state.showGptSearch;
     },
-    toggleLanguageButton: (state) => {
-      state.showLanguageButton = !state.showLanguageButton;
-    },
+    
   },
 });
 
-export const { toggleGptSearchButton, toggleLanguageButton } = gptSlice.actions;
+export const { toggleGptSearchButton } =
+  gptSlice.actions;
 
 export default gptSlice.reducer;

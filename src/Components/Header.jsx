@@ -5,13 +5,13 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUsers, removeUser } from "../Utils/userSlice";
-import { toggleGptSearchButton, toggleLanguageButton } from "../Utils/gptSlice";
-import LangButton from "./LangButton";
+import {toggleGptSearchButton} from "../Utils/gptSlice"
+import DropDownLangChange from "./DropDownLangChange";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
-  const languageButton = useSelector((store) => store.gpt.showLanguageButton);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   const dispatch = useDispatch();
   const handleSignOut = () => {
@@ -26,7 +26,6 @@ const Header = () => {
 
   const handleGPTSearchButton = () => {
     dispatch(toggleGptSearchButton());
-    dispatch(toggleLanguageButton());
   };
 
   useEffect(() => {
@@ -59,9 +58,9 @@ const Header = () => {
             className="text-white bg-purple-800  cursor-pointer px-4 py-1 mr-32 rounded-lg justify-center"
             onClick={handleGPTSearchButton}
           >
-            GPT Search
+            {showGptSearch? "HomePage": "GPT Search" }
           </button>
-          {languageButton && <LangButton />}
+          {showGptSearch && <DropDownLangChange />}
           <div className="-mr-28">
             <img className="w-12 h-12" alt="UserIcon" src={user.photoURL} />
 

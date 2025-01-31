@@ -34,7 +34,9 @@
 - Made the browse page amazing using tailwind css
 - Made custom Hook for Popular, Upcoming and TopRated movies
 - GPT search feature
-- Made a SearchBar and a language toggle Button
+- Made GPT Search Page
+- GPT Search bar
+- Multi Language Feature
 -  
 
 
